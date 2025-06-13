@@ -1,10 +1,10 @@
 package algoritmos_ordenacao.tipo_A;
 
-public class CombSort {
+public class Combsort {
     int tamanho = 0;
     int[] lista = new int[tamanho];
 
-    public CombSort(int tamanho, int[] lista) {
+    public Combsort(int tamanho, int[] lista) {
         this.tamanho = tamanho;
         this.lista = lista;
     }
