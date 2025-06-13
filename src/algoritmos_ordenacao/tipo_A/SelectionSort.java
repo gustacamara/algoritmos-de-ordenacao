@@ -1,7 +1,5 @@
 package algoritmos_ordenacao.tipo_A;
 
-import java.util.Random;
-
 public class SelectionSort {
 
     public int[] vetor;
