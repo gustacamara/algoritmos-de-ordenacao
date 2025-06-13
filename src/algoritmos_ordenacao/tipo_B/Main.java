@@ -12,9 +12,22 @@ public class Main {
         System.out.println("Lista original:");
         ordenador.imprimir();
 
+        long tempoInicial = System.nanoTime();
         ordenador.quicksort(inicio, fim);
+        long tempoFinal = System.nanoTime();
 
-        System.out.println("\nLista ordenada pelo CombSort:");
+        System.out.println("\n\nLista ordenada pelo QuickSort:");
         ordenador.imprimir();
+
+        long tempoDeExecucaoEmNanossegundos = tempoFinal - tempoInicial;
+        double tempoDeExecucaoEmMilissegundos = tempoDeExecucaoEmNanossegundos / 1_000_000.0;
+
+        System.out.println("\n--- Métricas de Execução ---");
+        System.out.printf("Tempo de execução: %.4f milissegundos.\n", tempoDeExecucaoEmMilissegundos);
+
+        System.out.println("\n\nContador de iterações: ");
+        System.out.println(ordenador.getIteracoes());
+        System.out.println("Contador de trocas: ");
+        System.out.println(ordenador.getTrocas());
     }
 }
