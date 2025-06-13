@@ -63,6 +63,7 @@ public class Quicksort {
             System.out.print(lista[i] + " ");
         }
     }
+
     public int getTrocas() {
         return this.contadorTrocas;
     }
