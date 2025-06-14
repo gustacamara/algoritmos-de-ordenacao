@@ -1,3 +1,5 @@
+import type { ChartConfig } from "@/components/ui/chart";
+
 function formataTamanho(tamanho: number): string {
   if (tamanho >= 1_000_000) return `${tamanho / 1_000_000}kk`;
   if (tamanho >= 1_000) return `${tamanho / 1_000}k`;
@@ -176,3 +178,25 @@ export function filtraSortPorTamanho(tamanhoOriginal: number) {
     return tamanhoOriginal === item.tamanho;
   });
 }
+export const chartConfig = {
+  ms: {
+    label: "ms",
+    color: "var(--chart-4)",
+  },
+  comparacoes: {
+    label: "Comparações",
+    color: "var(--chart-1)",
+  },
+  trocas: {
+    label: "Trocas",
+    color: "var(--chart-3)"
+  },
+  tamanho: {
+    label: "Vetor",
+    color: "var(--chart-2)"
+  },
+  iteracoes: {
+    label: "Iterações",
+    color: "var(--chart-5)"
+  }
+} satisfies ChartConfig

@@ -1,6 +1,6 @@
 import { Gauge } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-import { tempoOrdenacao } from "@/data/data"
+import { chartConfig, tempoOrdenacao } from "@/data/data"
 
 import {
   Card,
@@ -17,24 +17,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-const chartConfig = {
-  ms: {
-    label: "ms",
-    color: "var(--chart-4)",
-  },
-  comparacoes: {
-    label: "Comparações",
-    color: "var(--chart-1)",
-  },
-  trocas: {
-    label: "Trocas",
-    color: "var(--chart-3)"
-  },
-  tamanho: {
-    label: "Vetor",
-    color: "var(--chart-2)"
-  }
-} satisfies ChartConfig
+
 function calculaVariacao(): number {
   let media: number = 0
   tempoOrdenacao.map((value) => {
@@ -72,6 +55,7 @@ export function TempoOrdenacaoGeral() {
             <Bar dataKey="ms" fill="var(--color-ms)" stackId={"a"} />
             <Bar dataKey="comparacoes" fill="var(--color-comparacoes)" stackId={"a"} />
             <Bar dataKey="trocas" fill="var(--color-trocas)" stackId={"a"} />
+            <Bar dataKey="iteracoes" fill="var(--color-iteracoes)" stackId={"a"} />
           </BarChart>
         </ChartContainer>
       </CardContent>
