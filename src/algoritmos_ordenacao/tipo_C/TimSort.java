@@ -5,8 +5,8 @@ public class TimSort {
     static final int BLOCOS = 32;
     int[] vetor;
     private int tamanho;
-    private int numTrocas = 0;
-    private int interacoes = 0;
+    private long numTrocas = 0;
+    private long interacoes = 0;
 
     public TimSort(int[] vetor, int tamanho) {
         this.vetor = vetor;
@@ -107,8 +107,15 @@ public class TimSort {
             System.out.print(vetor[i] + " ");
         }
         System.out.println();
-        System.out.println("Número total de trocas: " + numTrocas);
-        System.out.println("Número total de iterações: " + interacoes);
+
+    }
+
+    public long getNumTrocas() {
+        return numTrocas;
+    }
+
+    public long getInteracoes() {
+        return interacoes;
     }
 }
 
