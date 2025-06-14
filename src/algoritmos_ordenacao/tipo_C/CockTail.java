@@ -6,8 +6,8 @@ public class CockTail {
     private int tamanho;
     private int temp = 0;
     private int troca = 0;
-    private int numTrocas = 0;
-    private int interacoes = 0;
+    private long numTrocas = 0;
+    private long interacoes = 0;
 
 
     public CockTail(int[] vetor, int tamanho) {
@@ -58,8 +58,15 @@ public class CockTail {
             System.out.print(vetor[i] + " ");
         }
         System.out.println();
-        System.out.println("Número total de trocas: " + numTrocas);
-        System.out.println("Número total de interações: " + interacoes);
+    }
+
+
+    public long getNumTrocas() {
+        return numTrocas;
+    }
+
+    public long getInteracoes() {
+        return interacoes;
     }
 
 }
