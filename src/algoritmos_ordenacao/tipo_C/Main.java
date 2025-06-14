@@ -1,9 +1,9 @@
+package algoritmos_ordenacao.tipo_C;
+
 import algoritmos_ordenacao.tipo_A.CombSort;
 import algoritmos_ordenacao.tipo_A.SelectionSort;
 import algoritmos_ordenacao.tipo_B.Quicksort;
-import algoritmos_ordenacao.tipo_C.CockTail;
-import algoritmos_ordenacao.tipo_C.GnomeSort;
-import algoritmos_ordenacao.tipo_C.TimSort;
+
 
 import java.util.Random;
 
@@ -39,10 +39,10 @@ public class Main {
 
 
                 // ===== CombSort =====
-                Combsort combSort = new Combsort(tamanho, dados);
+                CombSort combSort = new CombSort(tamanho, dados);
 
                 long inicioCombSort = System.nanoTime();
-                combsort.combsort(dados);
+                combSort.combsort(dados);
                 long tempoCombSort = System.nanoTime() - inicioCombSort;
 
                 TempoCombSort = tempoCombSort;
