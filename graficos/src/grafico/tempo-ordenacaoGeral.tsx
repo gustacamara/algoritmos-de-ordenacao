@@ -1,6 +1,6 @@
 import { Gauge } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-import { chartConfig, tempoOrdenacao } from "@/data/data"
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import { chartConfig, formataTamanho, tempoOrdenacao } from "@/data/data"
 
 import {
   Card,
@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/card"
 import {
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -45,14 +47,21 @@ export function TempoOrdenacaoGeral() {
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(_, index) => String(tempoOrdenacao[index].tamanho)}
+            />
+            <YAxis
+              scale="log"
+              domain={[1, 'auto']}
+              allowDataOverflow
+              tickFormatter={(value) => formataTamanho(value)}
+              tickLine={false}
+              axisLine={false}
             />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
+            <ChartLegend content={<ChartLegendContent />} />
             <Bar dataKey="ms" fill="var(--color-ms)" stackId={"a"} />
-            <Bar dataKey="comparacoes" fill="var(--color-comparacoes)" stackId={"a"} />
             <Bar dataKey="trocas" fill="var(--color-trocas)" stackId={"a"} />
             <Bar dataKey="iteracoes" fill="var(--color-iteracoes)" stackId={"a"} />
           </BarChart>

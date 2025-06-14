@@ -1,6 +1,7 @@
 import { Gauge } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import { chartConfig, filtraSortPorTamanho, tempoOrdenacao } from "@/data/data"
+import { formataTamanho } from "@/data/data"
 
 import {
   Card,
@@ -12,6 +13,8 @@ import {
 } from "@/components/ui/card"
 import {
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -27,6 +30,7 @@ function calculaVariacao(): number {
 }
 
 export function TempoOrdenacao1_000_000() {
+
   return (
     <Card className="grid grid-cols-2-col col-span-3 gap-4">
       <CardHeader>
@@ -45,14 +49,23 @@ export function TempoOrdenacao1_000_000() {
               tickMargin={10}
               axisLine={false}
             />
+            <YAxis
+              scale="log"
+              domain={[1, 'auto']} 
+              allowDataOverflow
+              tickFormatter={(value) => formataTamanho(value)} 
+              tickLine={false}
+              axisLine={false}
+            />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
+            <ChartLegend content={<ChartLegendContent />} />
             <Bar dataKey="ms" fill="var(--color-ms)" stackId={"a"} />
-            <Bar dataKey="comparacoes" fill="var(--color-comparacoes)" stackId={"a"} />
             <Bar dataKey="trocas" fill="var(--color-trocas)" stackId={"a"} />
             <Bar dataKey="iteracoes" fill="var(--color-iteracoes)" stackId={"a"} />
+            
           </BarChart>
         </ChartContainer>
       </CardContent>
