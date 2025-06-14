@@ -4,130 +4,109 @@ import algoritmos_ordenacao.tipo_A.CombSort;
 import algoritmos_ordenacao.tipo_A.SelectionSort;
 import algoritmos_ordenacao.tipo_B.Quicksort;
 
-
-import java.util.Random;
-
 public class Main {
+
     public static void main(String[] args) {
 
         int[] tamanhos = {1000, 10000, 100000, 500000, 1000000};
         int rodadas = 5;
 
-
         for (int tamanho : tamanhos) {
-            System.out.println("\n======= Tamanho do vetor: " + tamanho + " =======");
-
-            long TempoCocktail = 0;
-            long TempoTim = 0;
-            long TempoGnome = 0;
-            long TempoCombSort = 0;
-            long TempoSelectionSort = 0;
-            long TempoQuickSort = 0;
-            int inicio = 0;
-            int fim = tamanho - 1;
-
+            System.out.println(FormataMain.CABECALHO + tamanho + " =======");
 
             for (int rodada = 1; rodada <= rodadas; rodada++) {
-                System.out.println("\nRodada: " + rodada);
+                System.out.println(FormataMain.RODADA + rodada);
 
-                Random rand = new Random(rodada);
+                int[] dados = GeraNumeros.numerosAleatorios(tamanho, rodada);
 
-                int[] dados = new int[tamanho];
-                for (int i = 0; i < tamanho; i++) {
-                    dados[i] = rand.nextInt(1000000);
-                }
+                // --- CombSort ---
+                int[] dadosComb = new int[tamanho];
+                copiarVetor(dados, dadosComb, tamanho);
+                CombSort combSort = new CombSort(tamanho, dadosComb);
+                long inicio = System.nanoTime();
+                combSort.combsort(dadosComb);
+                long tempoComb = (System.nanoTime() - inicio);
 
-
-                // ===== CombSort =====
-                CombSort combSort = new CombSort(tamanho, dados);
-
-                long inicioCombSort = System.nanoTime();
-                combSort.combsort(dados);
-                long tempoCombSort = System.nanoTime() - inicioCombSort;
-
-                TempoCombSort = tempoCombSort;
-
-//                 ===== SelectionSort =====
+                // --- SelectionSort ---
+                int[] dadosSelection = new int[tamanho];
+                copiarVetor(dados, dadosSelection, tamanho);
                 SelectionSort selectionSort = new SelectionSort(tamanho);
-
-                long inicioSelectionSort = System.nanoTime();
+                inicio = System.nanoTime();
                 selectionSort.ordenar();
-                long tempoSelectionSort = System.nanoTime() - inicioSelectionSort;
+                long tempoSelection = (System.nanoTime() - inicio);
 
-                TempoSelectionSort = tempoSelectionSort;
+                // --- QuickSort ---
+                int[] dadosQuick = new int[tamanho];
+                copiarVetor(dados, dadosQuick, tamanho);
+                Quicksort quickSort = new Quicksort(tamanho, dadosQuick);
+                inicio = System.nanoTime();
+                quickSort.quicksort(0, tamanho - 1);
+                long tempoQuick = (System.nanoTime() - inicio);
 
-                // ===== QuickSort =====
-                Quicksort quickSort = new Quicksort(tamanho, dados);
+                // --- CocktailSort ---
+                int[] dadosCocktail = new int[tamanho];
+                copiarVetor(dados, dadosCocktail, tamanho);
+                CockTail cocktailSort = new CockTail(dadosCocktail, tamanho);
+                inicio = System.nanoTime();
+                cocktailSort.cockTail();
+                long tempoCocktail = (System.nanoTime() - inicio);
 
-                long inicioQuickSort = System.nanoTime();
-                quickSort.quicksort(inicio, fim);
-                long tempoQuickSort = System.nanoTime() - inicioQuickSort;
-
-                TempoQuickSort = tempoQuickSort;
-
-                // ===== CocktailSort =====
-                CockTail cocktail = new CockTail(dados, tamanho);
-
-                long inicioCockTail = System.nanoTime();
-                cocktail.cockTail();
-                long tempoCockTail = System.nanoTime() - inicioCockTail;
-
-                TempoCocktail = tempoCockTail;
-
-//                 ===== TimSort =====
-                TimSort timSort = new TimSort(dados, tamanho);
-
-                long inicioTimSort = System.nanoTime();
+                // --- TimSort ---
+                int[] dadosTim = new int[tamanho];
+                copiarVetor(dados, dadosTim, tamanho);
+                TimSort timSort = new TimSort(dadosTim, tamanho);
+                inicio = System.nanoTime();
                 timSort.timSort();
-                long tempoTimSort = System.nanoTime() - inicioTimSort;
+                long tempoTim = (System.nanoTime() - inicio);
 
-                TempoTim = tempoTimSort;
+                // --- GnomeSort ---
+                GnomeSort gnomeSort = new GnomeSort(tamanho);
 
-                // ===== GnomeSort =====
-                GnomeSort gnome = new GnomeSort(tamanho);
+                GeraNumeros.numerosGnome(tamanho, gnomeSort, rodada);
+                inicio = System.nanoTime();
+                gnomeSort.ordenar();
+                long tempoGnome = (System.nanoTime() - inicio);
 
-                for (int i = 0; i < tamanho; i++) {
-                    gnome.vetor[i] = (rand.nextInt(1000000));
-                }
-                long inicioGnome = System.nanoTime();
-                gnome.ordenar();
-                long tempoGnome = System.nanoTime() - inicioGnome;
+                // Resultados
+                System.out.println(FormataMain.RESULTADO + tamanho + " ----");
 
-                TempoGnome = tempoGnome;
+                System.out.println(FormataMain.COMB);
+                System.out.println(FormataMain.TEMPO + tempoComb / 1_000_000.0);
+                System.out.println(FormataMain.TROCA + combSort.getTrocas());
+                System.out.println(FormataMain.INTERACAO + combSort.getIteracoes());
 
+                System.out.println(FormataMain.SELECTION);
+                System.out.println(FormataMain.TEMPO + tempoSelection / 1_000_000.0);
+                System.out.println(FormataMain.TROCA + selectionSort.getTrocas());
+                System.out.println(FormataMain.INTERACAO + selectionSort.getInteracoes());
 
-                System.out.println("\n----Resultados para tamanho " + tamanho + " ----");
+                System.out.println(FormataMain.QUICK);
+                System.out.println(FormataMain.TEMPO + tempoQuick / 1_000_000.0);
+                System.out.println(FormataMain.TROCA + quickSort.getTrocas());
+                System.out.println(FormataMain.INTERACAO + quickSort.getIteracoes());
 
-                System.out.println("\nComb Sort:");
-                System.out.println("Tempo (ms): " + TempoCombSort / 1_000_000.0);
-                System.out.println("Trocas: " + combSort.getTrocas());
-                System.out.println("Iterações: " + combSort.getIteracoes());
+                System.out.println(FormataMain.COCKTAIL);
+                System.out.println(FormataMain.TEMPO + tempoCocktail / 1_000_000.0);
+                System.out.println(FormataMain.TROCA + cocktailSort.getNumTrocas());
+                System.out.println(FormataMain.INTERACAO + cocktailSort.getInteracoes());
 
-                System.out.println("\nSelection Sort:");
-                System.out.println("Tempo (ms): " + TempoSelectionSort / 1_000_000.0);
-                System.out.println("Trocas: " + selectionSort.getTrocas());
-                System.out.println("Iterações: " + selectionSort.getInteracoes());
+                System.out.println(FormataMain.TIM);
+                System.out.println(FormataMain.TEMPO + tempoTim / 1_000_000.0);
+                System.out.println(FormataMain.TROCA + timSort.getNumTrocas());
+                System.out.println(FormataMain.INTERACAO + timSort.getInteracoes());
 
-                System.out.println("\nQuick Sort:");
-                System.out.println("Tempo (ms): " + TempoQuickSort / 1_000_000.0);
-                System.out.println("Trocas: " + quickSort.getTrocas());
-                System.out.println("Iterações: " + quickSort.getIteracoes());
+                System.out.println(FormataMain.GNOME);
+                System.out.println(FormataMain.TEMPO + tempoGnome / 1_000_000.0);
+                System.out.println(FormataMain.TROCA + gnomeSort.getTrocas());
+                System.out.println(FormataMain.INTERACAO + gnomeSort.getInteracoes());
 
-                System.out.println("\nCocktail Sort:");
-                System.out.println("Tempo (ms): " + TempoCocktail / 1_000_000.0);
-                System.out.println("Trocas: " + cocktail.getNumTrocas());
-                System.out.println("Iterações: " + cocktail.getInteracoes());
-
-                System.out.println("\nTimSort:");
-                System.out.println("Tempo (ms): " + TempoTim / 1_000_000.0);
-                System.out.println("Trocas: " + timSort.getNumTrocas());
-                System.out.println("Iterações: " + timSort.getInteracoes());
-
-                System.out.println("\nGnome Sort:");
-                System.out.println("Tempo (ms): " + TempoGnome / 1_000_000.0);
-                System.out.println("Trocas: " + gnome.getTrocas());
-                System.out.println("Iterações: " + gnome.getInteracoes());
             }
+        }
+    }
+
+    private static void copiarVetor(int[] origem, int[] destino, int tamanho) {
+        for (int i = 0; i < tamanho; i++) {
+            destino[i] = origem[i];
         }
     }
 }
