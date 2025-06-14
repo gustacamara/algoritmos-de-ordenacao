@@ -6,8 +6,8 @@ public class Quicksort {
     private int[] lista;
     private int tamanho;
     private Random random = new Random();
-    public int contadorTrocas = 0;
-    public int contadorIteracoes = 0;
+    private int contadorTrocas = 0;
+    private int contadorIteracoes = 0;
 
     public Quicksort(int tamanho, int[] lista) {
         this.lista = lista;
@@ -29,7 +29,6 @@ public class Quicksort {
         int indiceParticao = particionar(inicio, fim, pivo);
         quicksort(inicio, indiceParticao - 1);
         quicksort(indiceParticao, fim);
-        contadorIteracoes++;
     }
 
     private int escolherPivo(int inicio, int fim) { // a escolha do pivo foi definida como índice aleatório
@@ -40,8 +39,18 @@ public class Quicksort {
     private int particionar(int inicio, int fim, int pivo) {
         int esq = inicio, dir = fim;
         while (esq <= dir) {
-            while (this.lista[esq] < pivo) esq++;
-            while (this.lista[dir] > pivo) dir--;
+            while (this.lista[esq] < pivo) {
+                this.contadorIteracoes++;
+                esq++;
+            }
+            this.contadorIteracoes++;
+
+            while (this.lista[dir] > pivo) {
+                this.contadorIteracoes++;
+                dir--;
+            }
+            this.contadorIteracoes++;
+
             if (esq <= dir) {
                 trocar(esq, dir);
                 esq++;
