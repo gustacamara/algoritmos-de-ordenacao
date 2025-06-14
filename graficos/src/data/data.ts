@@ -6,164 +6,1212 @@ function formataTamanho(tamanho: number): string {
   return tamanho.toString();
 }
 
-export const tempoOrdenacao = [
-  // Comb Sort
-  { nome: "Comb Sort", ms: 0.7048, trocas: 4475, iteracoes: 21710, tamanho: 1000 },
-  { nome: "Comb Sort", ms: 0.7356, trocas: 4439, iteracoes: 22709, tamanho: 1000 },
-  { nome: "Comb Sort", ms: 0.7013, trocas: 4465, iteracoes: 21710, tamanho: 1000 },
-  { nome: "Comb Sort", ms: 0.1087, trocas: 4356, iteracoes: 21710, tamanho: 1000 },
-  { nome: "Comb Sort", ms: 0.1295, trocas: 4473, iteracoes: 22709, tamanho: 1000 },
-  { nome: "Comb Sort", ms: 1.2268, trocas: 63308, iteracoes: 346732, tamanho: 10000 },
-  { nome: "Comb Sort", ms: 0.7789, trocas: 63623, iteracoes: 336733, tamanho: 10000 },
-  { nome: "Comb Sort", ms: 0.8048, trocas: 63842, iteracoes: 356731, tamanho: 10000 },
-  { nome: "Comb Sort", ms: 0.7816, trocas: 63547, iteracoes: 336733, tamanho: 10000 },
-  { nome: "Comb Sort", ms: 0.9195, trocas: 63062, iteracoes: 336733, tamanho: 10000 },
-  { nome: "Comb Sort", ms: 11.6266, trocas: 810671, iteracoes: 4066741, tamanho: 100000 },
-  { nome: "Comb Sort", ms: 11.7738, trocas: 811445, iteracoes: 4166740, tamanho: 100000 },
-  { nome: "Comb Sort", ms: 11.5229, trocas: 810242, iteracoes: 3966742, tamanho: 100000 },
-  { nome: "Comb Sort", ms: 11.7242, trocas: 813828, iteracoes: 4066741, tamanho: 100000 },
-  { nome: "Comb Sort", ms: 11.5916, trocas: 812723, iteracoes: 3966742, tamanho: 100000 },
-  { nome: "Comb Sort", ms: 49.7772, trocas: 4708196, iteracoes: 25333419, tamanho: 500000 },
-  { nome: "Comb Sort", ms: 49.201, trocas: 4707729, iteracoes: 24833420, tamanho: 500000 },
-  { nome: "Comb Sort", ms: 49.8661, trocas: 4703785, iteracoes: 25833418, tamanho: 500000 },
-  { nome: "Comb Sort", ms: 49.5545, trocas: 4705392, iteracoes: 24833420, tamanho: 500000 },
-  { nome: "Comb Sort", ms: 49.6869, trocas: 4702755, iteracoes: 25333419, tamanho: 500000 },
-  { nome: "Comb Sort", ms: 102.1669, trocas: 9750646, iteracoes: 49666762, tamanho: 1000000 },
-  { nome: "Comb Sort", ms: 101.8543, trocas: 9751521, iteracoes: 50666761, tamanho: 1000000 },
-  { nome: "Comb Sort", ms: 100.4909, trocas: 9745616, iteracoes: 49666762, tamanho: 1000000 },
-  { nome: "Comb Sort", ms: 102.5018, trocas: 9750319, iteracoes: 49666762, tamanho: 1000000 },
-  { nome: "Comb Sort", ms: 101.9731, trocas: 9746415, iteracoes: 49666762, tamanho: 1000000 },
-
-  // Selection Sort
-  { nome: "Selection Sort", ms: 2.567, trocas: 999, iteracoes: 499500, tamanho: 1000 },
-  { nome: "Selection Sort", ms: 1.1709, trocas: 999, iteracoes: 499500, tamanho: 1000 },
-  { nome: "Selection Sort", ms: 0.2324, trocas: 999, iteracoes: 499500, tamanho: 1000 },
-  { nome: "Selection Sort", ms: 1.209, trocas: 999, iteracoes: 499500, tamanho: 1000 },
-  { nome: "Selection Sort", ms: 1.2309, trocas: 999, iteracoes: 499500, tamanho: 1000 },
-  { nome: "Selection Sort", ms: 20.902, trocas: 9999, iteracoes: 49995000, tamanho: 10000 },
-  { nome: "Selection Sort", ms: 13.6671, trocas: 9999, iteracoes: 49995000, tamanho: 10000 },
-  { nome: "Selection Sort", ms: 12.982, trocas: 9999, iteracoes: 49995000, tamanho: 10000 },
-  { nome: "Selection Sort", ms: 13.075, trocas: 9999, iteracoes: 49995000, tamanho: 10000 },
-  { nome: "Selection Sort", ms: 12.8552, trocas: 9999, iteracoes: 49995000, tamanho: 10000 },
-  { nome: "Selection Sort", ms: 1271.3223, trocas: 99999, iteracoes: 704982704, tamanho: 100000 },
-  { nome: "Selection Sort", ms: 1253.3513, trocas: 99999, iteracoes: 704982704, tamanho: 100000 },
-  { nome: "Selection Sort", ms: 1242.4015, trocas: 99999, iteracoes: 704982704, tamanho: 100000 },
-  { nome: "Selection Sort", ms: 949.2368, trocas: 99999, iteracoes: 704982704, tamanho: 100000 },
-  { nome: "Selection Sort", ms: 949.3071, trocas: 99999, iteracoes: 704982704, tamanho: 100000 },
-  { nome: "Selection Sort", ms: 24089.6084, trocas: 499999, iteracoes: 445698416, tamanho: 500000 },
-  { nome: "Selection Sort", ms: 24644.285, trocas: 499999, iteracoes: 445698416, tamanho: 500000 },
-  { nome: "Selection Sort", ms: 24420.6283, trocas: 499999, iteracoes: 445698416, tamanho: 500000 },
-  { nome: "Selection Sort", ms: 24054.623, trocas: 499999, iteracoes: 445698416, tamanho: 500000 },
-  { nome: "Selection Sort", ms: 24278.3878, trocas: 499999, iteracoes: 445698416, tamanho: 500000 },
-  { nome: "Selection Sort", ms: 96457.1211, trocas: 999999, iteracoes: 1783293664, tamanho: 1000000 },
-  { nome: "Selection Sort", ms: 97068.5446, trocas: 999999, iteracoes: 1783293664, tamanho: 1000000 },
-  { nome: "Selection Sort", ms: 96251.2418, trocas: 999999, iteracoes: 1783293664, tamanho: 1000000 },
-  { nome: "Selection Sort", ms: 95274.3936, trocas: 999999, iteracoes: 1783293664, tamanho: 1000000 },
-  { nome: "Selection Sort", ms: 95216.8779, trocas: 999999, iteracoes: 1783293664, tamanho: 1000000 },
-
-  // Quick Sort
-  { nome: "Quick Sort", ms: 0.4307, trocas: 2955, iteracoes: 1280, tamanho: 1000 },
-  { nome: "Quick Sort", ms: 0.1275, trocas: 2964, iteracoes: 1243, tamanho: 1000 },
-  { nome: "Quick Sort", ms: 0.1293, trocas: 2966, iteracoes: 1274, tamanho: 1000 },
-  { nome: "Quick Sort", ms: 0.1115, trocas: 2948, iteracoes: 1271, tamanho: 1000 },
-  { nome: "Quick Sort", ms: 0.1106, trocas: 2928, iteracoes: 1248, tamanho: 1000 },
-  { nome: "Quick Sort", ms: 1.0667, trocas: 36852, iteracoes: 12591, tamanho: 10000 },
-  { nome: "Quick Sort", ms: 0.8183, trocas: 37416, iteracoes: 12721, tamanho: 10000 },
-  { nome: "Quick Sort", ms: 1.0002, trocas: 37117, iteracoes: 12646, tamanho: 10000 },
-  { nome: "Quick Sort", ms: 0.7357, trocas: 37170, iteracoes: 12649, tamanho: 10000 },
-  { nome: "Quick Sort", ms: 0.755, trocas: 37388, iteracoes: 12836, tamanho: 10000 },
-  { nome: "Quick Sort", ms: 8.3916, trocas: 445724, iteracoes: 125919, tamanho: 100000 },
-  { nome: "Quick Sort", ms: 8.0636, trocas: 449028, iteracoes: 125277, tamanho: 100000 },
-  { nome: "Quick Sort", ms: 8.1115, trocas: 449266, iteracoes: 125905, tamanho: 100000 },
-  { nome: "Quick Sort", ms: 8.0093, trocas: 451841, iteracoes: 126128, tamanho: 100000 },
-  { nome: "Quick Sort", ms: 7.9543, trocas: 451674, iteracoes: 126236, tamanho: 100000 },
-  { nome: "Quick Sort", ms: 41.7973, trocas: 2535083, iteracoes: 613089, tamanho: 500000 },
-  { nome: "Quick Sort", ms: 42.1195, trocas: 2528119, iteracoes: 612490, tamanho: 500000 },
-  { nome: "Quick Sort", ms: 42.0889, trocas: 2523954, iteracoes: 612272, tamanho: 500000 },
-  { nome: "Quick Sort", ms: 41.4016, trocas: 2503217, iteracoes: 612636, tamanho: 500000 },
-  { nome: "Quick Sort", ms: 40.8725, trocas: 2517255, iteracoes: 613011, tamanho: 500000 },
-  { nome: "Quick Sort", ms: 84.2487, trocas: 5269173, iteracoes: 1190101, tamanho: 1000000 },
-  { nome: "Quick Sort", ms: 85.7468, trocas: 5290787, iteracoes: 1187153, tamanho: 1000000 },
-  { nome: "Quick Sort", ms: 85.4854, trocas: 5325099, iteracoes: 1189099, tamanho: 1000000 },
-  { nome: "Quick Sort", ms: 86.2914, trocas: 5319503, iteracoes: 1188636, tamanho: 1000000 },
-  { nome: "Quick Sort", ms: 84.1751, trocas: 5330201, iteracoes: 1188273, tamanho: 1000000 },
-
-  // Cocktail Sort
-  { nome: "Cocktail Sort", ms: 4.3744, trocas: 245243, iteracoes: 372744, tamanho: 1000 },
-  { nome: "Cocktail Sort", ms: 2.1246, trocas: 254380, iteracoes: 393009, tamanho: 1000 },
-  { nome: "Cocktail Sort", ms: 1.2819, trocas: 250812, iteracoes: 380672, tamanho: 1000 },
-  { nome: "Cocktail Sort", ms: 1.2803, trocas: 246154, iteracoes: 377729, tamanho: 1000 },
-  { nome: "Cocktail Sort", ms: 0.5812, trocas: 242099, iteracoes: 375747, tamanho: 1000 },
-  { nome: "Cocktail Sort", ms: 72.4696, trocas: 24914821, iteracoes: 37407347, tamanho: 10000 },
-  { nome: "Cocktail Sort", ms: 69.7954, trocas: 24833858, iteracoes: 37256372, tamanho: 10000 },
-  { nome: "Cocktail Sort", ms: 69.8279, trocas: 25028958, iteracoes: 37706597, tamanho: 10000 },
-  { nome: "Cocktail Sort", ms: 70.3917, trocas: 25072594, iteracoes: 37756122, tamanho: 10000 },
-  { nome: "Cocktail Sort", ms: 70.7086, trocas: 25336107, iteracoes: 37992450, tamanho: 10000 },
-  { nome: "Cocktail Sort", ms: 8409.0901, trocas: 2511106515, iteracoes: 3760751564, tamanho: 100000 },
-  { nome: "Cocktail Sort", ms: 8354.3057, trocas: 2492436184, iteracoes: 3751474535, tamanho: 100000 },
-  { nome: "Cocktail Sort", ms: 8356.5117, trocas: 2495655308, iteracoes: 3750474945, tamanho: 100000 },
-  { nome: "Cocktail Sort", ms: 8099.8015, trocas: 2501156337, iteracoes: 3752873289, tamanho: 100000 },
-  { nome: "Cocktail Sort", ms: 8210.4416, trocas: 2504436724, iteracoes: 3757064847, tamanho: 100000 },
-  { nome: "Cocktail Sort", ms: 199144.14, trocas: 62493929685, iteracoes: 93675330747, tamanho: 500000 },
-  { nome: "Cocktail Sort", ms: 198950.2959, trocas: 62446728205, iteracoes: 93667320715, tamanho: 500000 },
-  { nome: "Cocktail Sort", ms: 198473.6771, trocas: 62500784030, iteracoes: 93837313575, tamanho: 500000 },
-  { nome: "Cocktail Sort", ms: 198532.1946, trocas: 62431321328, iteracoes: 93686843374, tamanho: 500000 },
-  { nome: "Cocktail Sort", ms: 199105.79, trocas: 62492638007, iteracoes: 93843304875, tamanho: 500000 },
-  // 1000000 não conseguiu processar
-
-  // TimSort
-  { nome: "TimSort", ms: 0.5996, trocas: 12430, iteracoes: 13237, tamanho: 1000 },
-  { nome: "TimSort", ms: 0.6171, trocas: 12615, iteracoes: 13430, tamanho: 1000 },
-  { nome: "TimSort", ms: 0.5854, trocas: 12665, iteracoes: 13480, tamanho: 1000 },
-  { nome: "TimSort", ms: 0.5912, trocas: 12797, iteracoes: 13596, tamanho: 1000 },
-  { nome: "TimSort", ms: 0.1146, trocas: 12819, iteracoes: 13632, tamanho: 1000 },
-  { nome: "TimSort", ms: 1.6525, trocas: 163950, iteracoes: 172038, tamanho: 10000 },
-  { nome: "TimSort", ms: 1.2356, trocas: 164557, iteracoes: 172646, tamanho: 10000 },
-  { nome: "TimSort", ms: 1.2856, trocas: 164269, iteracoes: 172358, tamanho: 10000 },
-  { nome: "TimSort", ms: 1.4112, trocas: 163509, iteracoes: 171695, tamanho: 10000 },
-  { nome: "TimSort", ms: 1.3845, trocas: 164576, iteracoes: 172680, tamanho: 10000 },
-  { nome: "TimSort", ms: 21.3831, trocas: 1967592, iteracoes: 2048823, tamanho: 100000 },
-  { nome: "TimSort", ms: 18.3251, trocas: 1970586, iteracoes: 2051576, tamanho: 100000 },
-  { nome: "TimSort", ms: 12.2402, trocas: 1964823, iteracoes: 2046166, tamanho: 100000 },
-  { nome: "TimSort", ms: 13.8909, trocas: 1966540, iteracoes: 2048023, tamanho: 100000 },
-  { nome: "TimSort", ms: 10.6093, trocas: 1967706, iteracoes: 2048708, tamanho: 100000 },
-  { nome: "TimSort", ms: 61.4593, trocas: 10865051, iteracoes: 11270925, tamanho: 500000 },
-  { nome: "TimSort", ms: 52.0887, trocas: 10871702, iteracoes: 11277454, tamanho: 500000 },
-  { nome: "TimSort", ms: 53.8689, trocas: 10860374, iteracoes: 11266525, tamanho: 500000 },
-  { nome: "TimSort", ms: 47.8217, trocas: 10862054, iteracoes: 11268459, tamanho: 500000 },
-  { nome: "TimSort", ms: 52.2674, trocas: 10864977, iteracoes: 11270538, tamanho: 500000 },
-  { nome: "TimSort", ms: 111.34, trocas: 22730246, iteracoes: 23541911, tamanho: 1000000 },
-  { nome: "TimSort", ms: 111.7851, trocas: 22737610, iteracoes: 23549089, tamanho: 1000000 },
-  { nome: "TimSort", ms: 110.6126, trocas: 22719275, iteracoes: 23531656, tamanho: 1000000 },
-  { nome: "TimSort", ms: 106.5849, trocas: 22720683, iteracoes: 23533365, tamanho: 1000000 },
-  { nome: "TimSort", ms: 110.3872, trocas: 22732200, iteracoes: 23543737, tamanho: 1000000 },
-
-  // Gnome Sort
-  { nome: "Gnome Sort", ms: 3.7551, trocas: 245243, iteracoes: 491473, tamanho: 1000 },
-  { nome: "Gnome Sort", ms: 0.7201, trocas: 254380, iteracoes: 509747, tamanho: 1000 },
-  { nome: "Gnome Sort", ms: 1.511, trocas: 250812, iteracoes: 502599, tamanho: 1000 },
-  { nome: "Gnome Sort", ms: 0.6133, trocas: 246154, iteracoes: 493297, tamanho: 1000 },
-  { nome: "Gnome Sort", ms: 0.6119, trocas: 242099, iteracoes: 485187, tamanho: 1000 },
-  { nome: "Gnome Sort", ms: 60.5103, trocas: 24914821, iteracoes: 49839621, tamanho: 10000 },
-  { nome: "Gnome Sort", ms: 61.5898, trocas: 24833858, iteracoes: 49677701, tamanho: 10000 },
-  { nome: "Gnome Sort", ms: 60.7225, trocas: 25028958, iteracoes: 50067889, tamanho: 10000 },
-  { nome: "Gnome Sort", ms: 60.91, trocas: 25072594, iteracoes: 50155175, tamanho: 10000 },
-  { nome: "Gnome Sort", ms: 61.3442, trocas: 25336107, iteracoes: 50682195, tamanho: 10000 },
-  { nome: "Gnome Sort", ms: 6042.0446, trocas: 2511106515, iteracoes: 5022313007, tamanho: 100000 },
-  { nome: "Gnome Sort", ms: 5951.1011, trocas: 2492436184, iteracoes: 4984972347, tamanho: 100000 },
-  { nome: "Gnome Sort", ms: 5948.8865, trocas: 2495655308, iteracoes: 4991410583, tamanho: 100000 },
-  { nome: "Gnome Sort", ms: 6880.6053, trocas: 2501156337, iteracoes: 5002412653, tamanho: 100000 },
-  { nome: "Gnome Sort", ms: 6784.7089, trocas: 2504436724, iteracoes: 5008973425, tamanho: 100000 },
-  { nome: "Gnome Sort", ms: 166229.7975, trocas: 62493929685, iteracoes: 124988359345, tamanho: 500000 },
-  { nome: "Gnome Sort", ms: 166888.3205, trocas: 62446728205, iteracoes: 124893956387, tamanho: 500000 },
-  { nome: "Gnome Sort", ms: 167372.356, trocas: 62500784030, iteracoes: 125002068025, tamanho: 500000 },
-  { nome: "Gnome Sort", ms: 174056.1358, trocas: 62431321328, iteracoes: 124863142623, tamanho: 500000 },
-  { nome: "Gnome Sort", ms: 174217.9009, trocas: 62492638007, iteracoes: 124985775987, tamanho: 500000 },
-  // 1000000 não conseguiu processar
-].map(item => ({
-  ...item,
-  tamanho: formataTamanho(item.tamanho)
-}));
+export const tempoOrdenacao =
+  [
+    {
+      nome: "Comb Sort",
+      tamanho: 1000,
+      rodada: 1,
+      ms: 0.502344,
+      trocas: 4475,
+      iteracoes: 21710
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 1000,
+      rodada: 1,
+      ms: 2.171121,
+      trocas: 999,
+      iteracoes: 499500
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 1000,
+      rodada: 1,
+      ms: 0.351749,
+      trocas: 1510,
+      iteracoes: 15767
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 1000,
+      rodada: 1,
+      ms: 0.038506,
+      trocas: 0,
+      iteracoes: 1997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 1000,
+      rodada: 1,
+      ms: 0.21329,
+      trocas: 5000,
+      iteracoes: 3528
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 1000,
+      rodada: 1,
+      ms: 2.954121,
+      trocas: 250674,
+      iteracoes: 502335
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 1000,
+      rodada: 2,
+      ms: 0.4978,
+      trocas: 4439,
+      iteracoes: 22709
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 1000,
+      rodada: 2,
+      ms: 0.16242,
+      trocas: 999,
+      iteracoes: 499500
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 1000,
+      rodada: 2,
+      ms: 0.077586,
+      trocas: 1541,
+      iteracoes: 16548
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 1000,
+      rodada: 2,
+      ms: 0.032927,
+      trocas: 0,
+      iteracoes: 1997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 1000,
+      rodada: 2,
+      ms: 0.182933,
+      trocas: 5000,
+      iteracoes: 3528
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 1000,
+      rodada: 2,
+      ms: 0.493823,
+      trocas: 241198,
+      iteracoes: 483377
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 1000,
+      rodada: 3,
+      ms: 0.476772,
+      trocas: 4465,
+      iteracoes: 21710
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 1000,
+      rodada: 3,
+      ms: 0.764489,
+      trocas: 999,
+      iteracoes: 499500
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 1000,
+      rodada: 3,
+      ms: 0.066209,
+      trocas: 1534,
+      iteracoes: 15926
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 1000,
+      rodada: 3,
+      ms: 0.03238,
+      trocas: 0,
+      iteracoes: 1997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 1000,
+      rodada: 3,
+      ms: 0.187678,
+      trocas: 5000,
+      iteracoes: 3528
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 1000,
+      rodada: 3,
+      ms: 1.103467,
+      trocas: 238246,
+      iteracoes: 477477
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 1000,
+      rodada: 4,
+      ms: 0.07746,
+      trocas: 4356,
+      iteracoes: 21710
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 1000,
+      rodada: 4,
+      ms: 0.11453,
+      trocas: 999,
+      iteracoes: 499500
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 1000,
+      rodada: 4,
+      ms: 0.052147,
+      trocas: 1476,
+      iteracoes: 15972
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 1000,
+      rodada: 4,
+      ms: 0.032328,
+      trocas: 0,
+      iteracoes: 1997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 1000,
+      rodada: 4,
+      ms: 0.191717,
+      trocas: 5000,
+      iteracoes: 3528
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 1000,
+      rodada: 4,
+      ms: 0.395188,
+      trocas: 249510,
+      iteracoes: 500011
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 1000,
+      rodada: 5,
+      ms: 0.074506,
+      trocas: 4473,
+      iteracoes: 22709
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 1000,
+      rodada: 5,
+      ms: 0.11311,
+      trocas: 999,
+      iteracoes: 499500
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 1000,
+      rodada: 5,
+      ms: 0.045887,
+      trocas: 1500,
+      iteracoes: 15733
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 1000,
+      rodada: 5,
+      ms: 0.032803,
+      trocas: 0,
+      iteracoes: 1997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 1000,
+      rodada: 5,
+      ms: 0.030185,
+      trocas: 5000,
+      iteracoes: 3528
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 1000,
+      rodada: 5,
+      ms: 0.417954,
+      trocas: 249467,
+      iteracoes: 499921
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 10000,
+      rodada: 1,
+      ms: 1.003213,
+      trocas: 63308,
+      iteracoes: 346732
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 10000,
+      rodada: 1,
+      ms: 10.308821,
+      trocas: 9999,
+      iteracoes: 49995000
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 10000,
+      rodada: 1,
+      ms: 0.375437,
+      trocas: 15003,
+      iteracoes: 197217
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 10000,
+      rodada: 1,
+      ms: 0.326658,
+      trocas: 0,
+      iteracoes: 19997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 10000,
+      rodada: 1,
+      ms: 0.484416,
+      trocas: 86336,
+      iteracoes: 56407
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 10000,
+      rodada: 1,
+      ms: 42.46171,
+      trocas: 25165736,
+      iteracoes: 50341459
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 10000,
+      rodada: 2,
+      ms: 0.746153,
+      trocas: 63623,
+      iteracoes: 336733
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 10000,
+      rodada: 2,
+      ms: 10.432261,
+      trocas: 9999,
+      iteracoes: 49995000
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 10000,
+      rodada: 2,
+      ms: 0.363034,
+      trocas: 14895,
+      iteracoes: 202317
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 10000,
+      rodada: 2,
+      ms: 0.31755,
+      trocas: 0,
+      iteracoes: 19997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 10000,
+      rodada: 2,
+      ms: 0.76054,
+      trocas: 86336,
+      iteracoes: 56407
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 10000,
+      rodada: 2,
+      ms: 59.206363,
+      trocas: 24936369,
+      iteracoes: 49882719
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 10000,
+      rodada: 3,
+      ms: 1.221574,
+      trocas: 63842,
+      iteracoes: 356731
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 10000,
+      rodada: 3,
+      ms: 15.625791,
+      trocas: 9999,
+      iteracoes: 49995000
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 10000,
+      rodada: 3,
+      ms: 0.503351,
+      trocas: 15038,
+      iteracoes: 201022
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 10000,
+      rodada: 3,
+      ms: 0.439913,
+      trocas: 0,
+      iteracoes: 19997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 10000,
+      rodada: 3,
+      ms: 0.832968,
+      trocas: 86336,
+      iteracoes: 56407
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 10000,
+      rodada: 3,
+      ms: 45.190976,
+      trocas: 24748783,
+      iteracoes: 49507545
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 10000,
+      rodada: 4,
+      ms: 0.69884,
+      trocas: 63547,
+      iteracoes: 336733
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 10000,
+      rodada: 4,
+      ms: 10.409479,
+      trocas: 9999,
+      iteracoes: 49995000
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 10000,
+      rodada: 4,
+      ms: 0.36689,
+      trocas: 14994,
+      iteracoes: 195332
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 10000,
+      rodada: 4,
+      ms: 0.191072,
+      trocas: 0,
+      iteracoes: 19997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 10000,
+      rodada: 4,
+      ms: 0.849151,
+      trocas: 86336,
+      iteracoes: 56407
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 10000,
+      rodada: 4,
+      ms: 54.21748,
+      trocas: 24963150,
+      iteracoes: 49936279
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 10000,
+      rodada: 5,
+      ms: 0.740331,
+      trocas: 63062,
+      iteracoes: 336733
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 10000,
+      rodada: 5,
+      ms: 15.52583,
+      trocas: 9999,
+      iteracoes: 49995000
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 10000,
+      rodada: 5,
+      ms: 0.581791,
+      trocas: 15080,
+      iteracoes: 205891
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 10000,
+      rodada: 5,
+      ms: 0.130077,
+      trocas: 0,
+      iteracoes: 19997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 10000,
+      rodada: 5,
+      ms: 0.303127,
+      trocas: 86336,
+      iteracoes: 56407
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 10000,
+      rodada: 5,
+      ms: 54.864717,
+      trocas: 25243039,
+      iteracoes: 50496065
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 100000,
+      rodada: 1,
+      ms: 9.15896,
+      trocas: 810671,
+      iteracoes: 4066741
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 100000,
+      rodada: 1,
+      ms: 1002.421323,
+      trocas: 99999,
+      iteracoes: 704982704
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 100000,
+      rodada: 1,
+      ms: 3.712095,
+      trocas: 149945,
+      iteracoes: 2543233
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 100000,
+      rodada: 1,
+      ms: 0.357541,
+      trocas: 0,
+      iteracoes: 199997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 100000,
+      rodada: 1,
+      ms: 2.32059,
+      trocas: 1192992,
+      iteracoes: 724843
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 100000,
+      rodada: 1,
+      ms: 4218.488786,
+      trocas: 2497658200,
+      iteracoes: 4995416379
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 100000,
+      rodada: 2,
+      ms: 8.367807,
+      trocas: 811445,
+      iteracoes: 4166740
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 100000,
+      rodada: 2,
+      ms: 987.7296,
+      trocas: 99999,
+      iteracoes: 704982704
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 100000,
+      rodada: 2,
+      ms: 3.790082,
+      trocas: 150435,
+      iteracoes: 2499252
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 100000,
+      rodada: 2,
+      ms: 0.054829,
+      trocas: 0,
+      iteracoes: 199997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 100000,
+      rodada: 2,
+      ms: 2.037798,
+      trocas: 1192992,
+      iteracoes: 724843
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 100000,
+      rodada: 2,
+      ms: 4213.351492,
+      trocas: 2493641956,
+      iteracoes: 4987383887
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 100000,
+      rodada: 3,
+      ms: 8.18347,
+      trocas: 810242,
+      iteracoes: 3966742
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 100000,
+      rodada: 3,
+      ms: 989.043458,
+      trocas: 99999,
+      iteracoes: 704982704
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 100000,
+      rodada: 3,
+      ms: 3.75698,
+      trocas: 150082,
+      iteracoes: 2511764
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 100000,
+      rodada: 3,
+      ms: 0.055046,
+      trocas: 0,
+      iteracoes: 199997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 100000,
+      rodada: 3,
+      ms: 2.078813,
+      trocas: 1192992,
+      iteracoes: 724843
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 100000,
+      rodada: 3,
+      ms: 4274.020531,
+      trocas: 2496434584,
+      iteracoes: 4992969151
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 100000,
+      rodada: 4,
+      ms: 8.489039,
+      trocas: 813828,
+      iteracoes: 4066741
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 100000,
+      rodada: 4,
+      ms: 999.199207,
+      trocas: 99999,
+      iteracoes: 704982704
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 100000,
+      rodada: 4,
+      ms: 3.755334,
+      trocas: 150032,
+      iteracoes: 2537356
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 100000,
+      rodada: 4,
+      ms: 0.055652,
+      trocas: 0,
+      iteracoes: 199997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 100000,
+      rodada: 4,
+      ms: 2.175914,
+      trocas: 1192992,
+      iteracoes: 724843
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 100000,
+      rodada: 4,
+      ms: 4350.753175,
+      trocas: 2497733439,
+      iteracoes: 4995566857
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 100000,
+      rodada: 5,
+      ms: 8.309209,
+      trocas: 812723,
+      iteracoes: 3966742
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 100000,
+      rodada: 5,
+      ms: 992.974235,
+      trocas: 99999,
+      iteracoes: 704982704
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 100000,
+      rodada: 5,
+      ms: 3.909353,
+      trocas: 150137,
+      iteracoes: 2504611
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 100000,
+      rodada: 5,
+      ms: 0.057341,
+      trocas: 0,
+      iteracoes: 199997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 100000,
+      rodada: 5,
+      ms: 1.953156,
+      trocas: 1192992,
+      iteracoes: 724843
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 100000,
+      rodada: 5,
+      ms: 4323.757403,
+      trocas: 2490729918,
+      iteracoes: 4981559811
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 500000,
+      rodada: 1,
+      ms: 49.439464,
+      trocas: 4708196,
+      iteracoes: 25333419
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 500000,
+      rodada: 1,
+      ms: 25991.912813,
+      trocas: 499999,
+      iteracoes: 445698416
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 500000,
+      rodada: 1,
+      ms: 19.857604,
+      trocas: 754738,
+      iteracoes: 13785781
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 500000,
+      rodada: 1,
+      ms: 0.30491,
+      trocas: 0,
+      iteracoes: 999997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 500000,
+      rodada: 1,
+      ms: 11.826597,
+      trocas: 6990272,
+      iteracoes: 4032151
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 500000,
+      rodada: 1,
+      ms: 105754.158216,
+      trocas: 62434391529,
+      iteracoes: 124869283029
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 500000,
+      rodada: 2,
+      ms: 48.410011,
+      trocas: 4707729,
+      iteracoes: 24833420
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 500000,
+      rodada: 2,
+      ms: 24842.910475,
+      trocas: 499999,
+      iteracoes: 445698416
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 500000,
+      rodada: 2,
+      ms: 19.221862,
+      trocas: 754817,
+      iteracoes: 13658611
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 500000,
+      rodada: 2,
+      ms: 0.297276,
+      trocas: 0,
+      iteracoes: 999997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 500000,
+      rodada: 2,
+      ms: 9.207507,
+      trocas: 6990272,
+      iteracoes: 4032151
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 500000,
+      rodada: 2,
+      ms: 105875.182944,
+      trocas: 62599006659,
+      iteracoes: 125198513293
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 500000,
+      rodada: 3,
+      ms: 48.681033,
+      trocas: 4703785,
+      iteracoes: 25833418
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 500000,
+      rodada: 3,
+      ms: 25035.739394,
+      trocas: 499999,
+      iteracoes: 445698416
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 500000,
+      rodada: 3,
+      ms: 19.780856,
+      trocas: 754761,
+      iteracoes: 14492120
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 500000,
+      rodada: 3,
+      ms: 0.275338,
+      trocas: 0,
+      iteracoes: 999997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 500000,
+      rodada: 3,
+      ms: 8.669955,
+      trocas: 6990272,
+      iteracoes: 4032151
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 500000,
+      rodada: 3,
+      ms: 105213.60934,
+      trocas: 62485581779,
+      iteracoes: 124971663539
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 500000,
+      rodada: 4,
+      ms: 48.380509,
+      trocas: 4705392,
+      iteracoes: 24833420
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 500000,
+      rodada: 4,
+      ms: 24758.99987,
+      trocas: 499999,
+      iteracoes: 445698416
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 500000,
+      rodada: 4,
+      ms: 19.458831,
+      trocas: 755209,
+      iteracoes: 13847005
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 500000,
+      rodada: 4,
+      ms: 0.278873,
+      trocas: 0,
+      iteracoes: 999997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 500000,
+      rodada: 4,
+      ms: 6.753544,
+      trocas: 6990272,
+      iteracoes: 4032151
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 500000,
+      rodada: 4,
+      ms: 105318.070078,
+      trocas: 62460844033,
+      iteracoes: 124922188041
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 500000,
+      rodada: 5,
+      ms: 48.480636,
+      trocas: 4702755,
+      iteracoes: 25333419
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 500000,
+      rodada: 5,
+      ms: 24809.123388,
+      trocas: 499999,
+      iteracoes: 445698416
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 500000,
+      rodada: 5,
+      ms: 19.539454,
+      trocas: 752664,
+      iteracoes: 14447172
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 500000,
+      rodada: 5,
+      ms: 0.275082,
+      trocas: 0,
+      iteracoes: 999997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 500000,
+      rodada: 5,
+      ms: 7.103348,
+      trocas: 6990272,
+      iteracoes: 4032151
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 500000,
+      rodada: 5,
+      ms: 105949.293844,
+      trocas: 62506728624,
+      iteracoes: 125013957221
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 1000000,
+      rodada: 1,
+      ms: 99.367732,
+      trocas: 9750646,
+      iteracoes: 49666762
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 1000000,
+      rodada: 1,
+      ms: 99545.995087,
+      trocas: 999999,
+      iteracoes: 1783293664
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 1000000,
+      rodada: 1,
+      ms: 39.233623,
+      trocas: 1526295,
+      iteracoes: 29188106
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 1000000,
+      rodada: 1,
+      ms: 0.572062,
+      trocas: 0,
+      iteracoes: 1999997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 1000000,
+      rodada: 1,
+      ms: 12.629279,
+      trocas: 14980544,
+      iteracoes: 8564302
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 1000000,
+      rodada: 1,
+      ms: 422410.700477,
+      trocas: 250040968794,
+      iteracoes: 500082937565
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 1000000,
+      rodada: 2,
+      ms: 99.602406,
+      trocas: 9751521,
+      iteracoes: 50666761
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 1000000,
+      rodada: 2,
+      ms: 99696.132175,
+      trocas: 999999,
+      iteracoes: 1783293664
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 1000000,
+      rodada: 2,
+      ms: 39.098532,
+      trocas: 1525503,
+      iteracoes: 28960747
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 1000000,
+      rodada: 2,
+      ms: 0.572328,
+      trocas: 0,
+      iteracoes: 1999997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 1000000,
+      rodada: 2,
+      ms: 16.094866,
+      trocas: 14980544,
+      iteracoes: 8564302
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 1000000,
+      rodada: 2,
+      ms: 422478.803409,
+      trocas: 250404489122,
+      iteracoes: 500809978209
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 1000000,
+      rodada: 3,
+      ms: 99.312963,
+      trocas: 9745616,
+      iteracoes: 49666762
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 1000000,
+      rodada: 3,
+      ms: 99890.350267,
+      trocas: 999999,
+      iteracoes: 1783293664
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 1000000,
+      rodada: 3,
+      ms: 39.334262,
+      trocas: 1524742,
+      iteracoes: 28896688
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 1000000,
+      rodada: 3,
+      ms: 0.555402,
+      trocas: 0,
+      iteracoes: 1999997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 1000000,
+      rodada: 3,
+      ms: 13.701189,
+      trocas: 14980544,
+      iteracoes: 8564302
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 1000000,
+      rodada: 3,
+      ms: 421522.311476,
+      trocas: 249882574192,
+      iteracoes: 499766148351
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 1000000,
+      rodada: 4,
+      ms: 99.433302,
+      trocas: 9750319,
+      iteracoes: 49666762
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 1000000,
+      rodada: 4,
+      ms: 99449.708082,
+      trocas: 999999,
+      iteracoes: 1783293664
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 1000000,
+      rodada: 4,
+      ms: 39.091465,
+      trocas: 1526672,
+      iteracoes: 28633512
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 1000000,
+      rodada: 4,
+      ms: 0.567078,
+      trocas: 0,
+      iteracoes: 1999997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 1000000,
+      rodada: 4,
+      ms: 14.702403,
+      trocas: 14980544,
+      iteracoes: 8564302
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 1000000,
+      rodada: 4,
+      ms: 425193.107861,
+      trocas: 250002308302,
+      iteracoes: 500005616587
+    },
+    {
+      nome: "Comb Sort",
+      tamanho: 1000000,
+      rodada: 5,
+      ms: 99.240093,
+      trocas: 9746415,
+      iteracoes: 49666762
+    },
+    {
+      nome: "Selection Sort",
+      tamanho: 1000000,
+      rodada: 5,
+      ms: 99681.451711,
+      trocas: 999999,
+      iteracoes: 1783293664
+    },
+    {
+      nome: "Quick Sort",
+      tamanho: 1000000,
+      rodada: 5,
+      ms: 39.187489,
+      trocas: 1525003,
+      iteracoes: 28815627
+    },
+    {
+      nome: "Cocktail Sort",
+      tamanho: 1000000,
+      rodada: 5,
+      ms: 0.579236,
+      trocas: 0,
+      iteracoes: 1999997
+    },
+    {
+      nome: "TimSort",
+      tamanho: 1000000,
+      rodada: 5,
+      ms: 14.072776,
+      trocas: 14980544,
+      iteracoes: 8564302
+    },
+    {
+      nome: "Gnome Sort",
+      tamanho: 1000000,
+      rodada: 5,
+      ms: 423426.003143,
+      trocas: 249908709438,
+      iteracoes: 499818418847
+    }
+  ].map(item => ({
+    ...item,
+    tamanho: formataTamanho(item.tamanho)
+  }));
 export function filtraSortPorTamanho(tamanhoOriginal: number) {
   return tempoOrdenacao.filter(item => {
     if (typeof item.tamanho === 'string') {

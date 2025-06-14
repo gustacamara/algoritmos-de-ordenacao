@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         int[] lista = {10, 3, 39, 8, 23, 19, 20};
 
-        Combsort ordenador = new Combsort(7, lista);
+        CombSort ordenador = new CombSort(7, lista);
 
         System.out.println("Lista original:");
         ordenador.imprimir();
