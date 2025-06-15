@@ -1,6 +1,6 @@
 import { Gauge } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
-import { chartConfig, filtraSortPorTamanho, tempoOrdenacao } from "@/data/data"
+import { computaMediaPorNomeTamanho, chartConfig, calculaVariacao } from "@/data/data"
 import { formataTamanho } from "@/data/data"
 
 import {
@@ -19,29 +19,21 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-function calculaVariacao(): number {
-  let media: number = 0
-  tempoOrdenacao.map((value) => {
-    media += value.ms
-  })
-  media = media / tempoOrdenacao.length
-  media = Math.round(media)
-  return media
-}
+
 
 export function TempoOrdenacao1_000_000() {
-
+  const dados = computaMediaPorNomeTamanho(1_000_000)
   return (
-    <Card className="grid grid-cols-2-col col-span-3 gap-4">
+    <Card className="grid grid-cols-2-col col-span-1 gap-4">
       <CardHeader>
         <CardTitle>Vetores de 1.000.000 linhas</CardTitle>
         <CardDescription>
-          Comparativo com os vetores de <span className="text-accent-foreground">1.000.000</span> linhas.
+          Comparativo com a média dos vetores de <span className="text-accent-foreground">1.000.000</span> linhas.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[240px] w-full">
-          <BarChart accessibilityLayer data={filtraSortPorTamanho(1_000_000)}>
+          <BarChart accessibilityLayer data={dados}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="nome"
@@ -51,9 +43,9 @@ export function TempoOrdenacao1_000_000() {
             />
             <YAxis
               scale="log"
-              domain={[1, 'auto']} 
+              domain={[1, 'auto']}
               allowDataOverflow
-              tickFormatter={(value) => formataTamanho(value)} 
+              tickFormatter={(value) => formataTamanho(value)}
               tickLine={false}
               axisLine={false}
             />
@@ -65,13 +57,13 @@ export function TempoOrdenacao1_000_000() {
             <Bar dataKey="ms" fill="var(--color-ms)" stackId={"a"} />
             <Bar dataKey="trocas" fill="var(--color-trocas)" stackId={"a"} />
             <Bar dataKey="iteracoes" fill="var(--color-iteracoes)" stackId={"a"} />
-            
+
           </BarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 leading-none font-medium">
-          Execução média geral: {calculaVariacao()} ms<Gauge className="h-4 w-4" />
+          Execução média geral: {calculaVariacao(dados)} ms<Gauge className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
           Mostra o tempo de execução e a quantidade de comparações de cada

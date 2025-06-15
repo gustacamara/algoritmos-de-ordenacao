@@ -1,11 +1,5 @@
 import type { ChartConfig } from "@/components/ui/chart";
-
-export function formataTamanho(tamanho: number): string {
-  if (tamanho >= 1_000_000_000) return `${tamanho / 1_000_000_000}B`;
-  if (tamanho >= 1_000_000) return `${tamanho / 1_000_000}kk`;
-  if (tamanho >= 1_000) return `${tamanho / 1_000}k`;
-  return tamanho.toString();
-}
+type TempoOrdenacaoItem = typeof tempoOrdenacao[number];
 
 export const tempoOrdenacao = [
   { nome: "Comb Sort", tamanho: 1000, rodada: 1, ms: 0.6542, trocas: 4475, iteracoes: 21710 },
@@ -163,6 +157,41 @@ export const tempoOrdenacao = [
   tamanho: formataTamanho(item.tamanho)
 }));
 
+export function calculaVariacao(dados: TempoOrdenacaoItem[]): number {
+  let media: number = 0
+  dados.map((value) => {
+    media += value.ms
+  })
+  media = media / dados.length
+  return Math.round(media * 100) / 100
+}
+export function formataTamanho(tamanho: number): string {
+  if (tamanho >= 1_000_000_000) return `${tamanho / 1_000_000_000}B`;
+  if (tamanho >= 1_000_000) return `${tamanho / 1_000_000}kk`;
+  if (tamanho >= 1_000) return `${tamanho / 1_000}k`;
+  return tamanho.toString();
+}
+
+export const mediaPorTamanho = Object.values(
+  tempoOrdenacao.reduce((acc, curr) => {
+    const key = `${curr.tamanho}-${curr.nome}`;
+    if (!acc[key]) {
+      acc[key] = { ...curr, count: 1 };
+    } else {
+      acc[key].ms += curr.ms;
+      acc[key].trocas += curr.trocas;
+      acc[key].iteracoes += curr.iteracoes;
+      acc[key].count += 1;
+    }
+    return acc;
+  }, {} as Record<string, any>)
+).map((item) => ({
+  ...item,
+  ms: item.ms / item.count,
+  trocas: Math.round(item.trocas / item.count),
+  iteracoes: Math.round(item.iteracoes / item.count),
+}))
+
 export function filtraSortPorTamanho(tamanhoOriginal: number) {
   return tempoOrdenacao.filter(item => {
     if (typeof item.tamanho === 'string') {
@@ -178,6 +207,37 @@ export function filtraSortPorTamanho(tamanhoOriginal: number) {
   });
 }
 
+export function computaMediaPorNomeTamanho(tamanhoOriginal: number) {
+  const filtrados = filtraSortPorTamanho(tamanhoOriginal);
+  const grupos: Record<string, { total: Omit<TempoOrdenacaoItem, "nome" | "tamanho">; count: number; nome: string; tamanho: string }> = {};
+
+  for (const item of filtrados) {
+    const chave = `${item.nome}|${item.tamanho}`;
+    if (!grupos[chave]) {
+      grupos[chave] = {
+        total: { rodada: 0, ms: 0, trocas: 0, iteracoes: 0 },
+        count: 0,
+        nome: item.nome,
+        tamanho: item.tamanho,
+      };
+    }
+    grupos[chave].total.rodada += item.rodada;
+    grupos[chave].total.ms += item.ms;
+    grupos[chave].total.trocas += item.trocas;
+    grupos[chave].total.iteracoes += item.iteracoes;
+    grupos[chave].count += 1;
+  }
+
+  return Object.values(grupos).map(({ nome, tamanho, total, count }) => ({
+    nome,
+    tamanho,
+    rodada: Math.round(total.rodada / count),
+    ms: total.ms / count,
+    trocas: Math.round(total.trocas / count),
+    iteracoes: Math.round(total.iteracoes / count),
+  }));
+}
+
 export const chartConfig = {
   ms: {
     label: "ms",
@@ -190,5 +250,9 @@ export const chartConfig = {
   iteracoes: {
     label: "Iterações",
     color: "var(--chart-1)"
+  },
+  tamanho: {
+    label: "Tamanho",
+    color: "var(--chart-4)"
   }
 } satisfies ChartConfig

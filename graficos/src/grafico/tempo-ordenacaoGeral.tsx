@@ -1,6 +1,6 @@
 import { Gauge } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
-import { chartConfig, formataTamanho, tempoOrdenacao } from "@/data/data"
+import { calculaVariacao, chartConfig, formataTamanho, mediaPorTamanho} from "@/data/data"
 
 import {
   Card,
@@ -18,35 +18,51 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-
-function calculaVariacao(): number {
-  let media: number = 0
-  tempoOrdenacao.map((value) => {
-    media += value.ms
-  })
-  media = media / tempoOrdenacao.length
-  media = Math.round(media)
-  return media
-}
-
 export function TempoOrdenacaoGeral() {
   return (
     <Card className="grid grid-cols-2-col col-span-3 gap-4">
       <CardHeader>
         <CardTitle>Tempo de ordenação geral</CardTitle>
         <CardDescription>
-          Comparativo com <span className="text-accent-foreground">todos</span> os algoritmos
+          Comparativo com a média dos vetores de <span className="text-accent-foreground">todos</span> os algoritmos.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[240px] w-full">
-          <BarChart accessibilityLayer data={tempoOrdenacao}>
+          <BarChart accessibilityLayer data={mediaPorTamanho}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="nome"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
+              tickFormatter={(_, i) => (mediaPorTamanho[i].tamanho)}
+              interval={0}
+              padding={{ left: 10, right: 10 }}
+              tick={({ x, y, index }) => (
+                <g>
+                  <text
+                    x={x}
+                    y={y + 15}
+                    textAnchor="middle"
+                    fill="#888"
+                    fontSize={12}
+                  >
+                    {mediaPorTamanho[index].tamanho}
+                  </text>
+                  {index !== 0 &&
+                    mediaPorTamanho[index].tamanho !== mediaPorTamanho[index - 1].tamanho && (
+                      <line
+                        x1={x - 25}
+                        x2={x - 25}
+                        y1={0}
+                        y2={220}
+                        stroke="#e5e7eb"
+                        strokeDasharray="4 2"
+                      />
+                    )}
+                </g>
+              )}
             />
             <YAxis
               scale="log"
@@ -69,7 +85,7 @@ export function TempoOrdenacaoGeral() {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 leading-none font-medium">
-          Execução média geral: {calculaVariacao()} ms<Gauge className="h-4 w-4" />
+          Execução média geral: {calculaVariacao(mediaPorTamanho)} ms<Gauge className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
           Mostra o tempo de execução e a quantidade de comparações de cada
