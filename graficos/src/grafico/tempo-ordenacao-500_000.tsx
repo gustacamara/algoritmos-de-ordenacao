@@ -1,6 +1,6 @@
 import { Gauge } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
-import { chartConfig, filtraSortPorTamanho, formataTamanho, tempoOrdenacao } from "@/data/data"
+import { computaMediaPorNomeTamanho, chartConfig, formataTamanho, calculaVariacao } from "@/data/data"
 
 import {
   Card,
@@ -18,28 +18,19 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-function calculaVariacao(): number {
-  let media: number = 0
-  tempoOrdenacao.map((value) => {
-    media += value.ms
-  })
-  media = media / tempoOrdenacao.length
-  media = Math.round(media)
-  return media
-}
-
 export function TempoOrdenacao500_000() {
+  const dados = computaMediaPorNomeTamanho(500_000)
   return (
-    <Card className="grid grid-cols-2-col col-span-3 gap-4">
+    <Card className="grid grid-cols-2-col col-span-1 gap-4">
       <CardHeader>
         <CardTitle>Vetores de 500.000 linhas</CardTitle>
         <CardDescription>
-          Comparativo com os vetores de <span className="text-accent-foreground">500.000</span> linhas.
+          Comparativo com a média dos vetores de <span className="text-accent-foreground">500.000</span> linhas.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[240px] w-full">
-          <BarChart accessibilityLayer data={filtraSortPorTamanho(500_000)}>
+          <BarChart accessibilityLayer data={dados}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="nome"
@@ -68,7 +59,7 @@ export function TempoOrdenacao500_000() {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 leading-none font-medium">
-          Execução média geral: {calculaVariacao()} ms<Gauge className="h-4 w-4" />
+          Execução média geral: {calculaVariacao(dados)} ms<Gauge className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
           Mostra o tempo de execução e a quantidade de comparações de cada

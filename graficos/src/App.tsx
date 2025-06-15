@@ -27,15 +27,15 @@ export function App() {
         <div className='flex flex-col gap-4'>
           <div className='grid grid-cols-9 gap-4'>
           </div>
-          <div className='grid gap-4'>
+          <div className='grid gap-4 grid-cols-3'>
             <TempoOrdenacaoGeral />
             <TempoOrdenacao1000 />
             <TempoOrdenacao10_000 />
             <TempoOrdenacao100_000 />
-            <TempoOrdenacao500_000 />
-            <TempoOrdenacao1_000_000 />
           </div>
           <div className='grid grid-cols-2 gap-4'>
+            <TempoOrdenacao500_000 />
+            <TempoOrdenacao1_000_000 />
           </div>
         </div>
       </div>
