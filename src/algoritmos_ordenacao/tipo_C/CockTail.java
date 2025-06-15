@@ -15,36 +15,35 @@ public class CockTail {
         this.tamanho = tamanho;
     }
 
-    public void cockTail()
-    {
+    public void cockTail() {
         int inicio = 0;
         int fim = tamanho - 1;
+        boolean trocou = true;
 
-        while (troca == 0 && inicio < fim) {
-            troca = 1;
+        while (trocou && inicio < fim) {
+            trocou = false;
 
             for (int i = inicio; i < fim; i++) {
-                interacoes ++;
+                interacoes++;
                 if (vetor[i] > vetor[i + 1]) {
                     temp = vetor[i];
                     vetor[i] = vetor[i + 1];
                     vetor[i + 1] = temp;
                     numTrocas++;
-                    troca = 0;
+                    trocou = true;
                 }
             }
 
             fim--;
 
             for (int i = fim; i > inicio; i--) {
-                interacoes ++;
-
+                interacoes++;
                 if (vetor[i] < vetor[i - 1]) {
                     temp = vetor[i];
                     vetor[i] = vetor[i - 1];
                     vetor[i - 1] = temp;
                     numTrocas++;
-                    troca = 0;
+                    trocou = true;
                 }
             }
 
