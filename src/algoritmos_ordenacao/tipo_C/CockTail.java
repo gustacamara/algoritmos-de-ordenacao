@@ -6,8 +6,8 @@ public class CockTail {
     private int tamanho;
     private int temp = 0;
     private int troca = 0;
-    private int numTrocas = 0;
-    private int interacoes = 0;
+    private long numTrocas = 0;
+    private long interacoes = 0;
 
 
     public CockTail(int[] vetor, int tamanho) {
@@ -15,36 +15,35 @@ public class CockTail {
         this.tamanho = tamanho;
     }
 
-    public void cockTail()
-    {
+    public void cockTail() {
         int inicio = 0;
         int fim = tamanho - 1;
+        boolean trocou = true;
 
-        while (troca == 0 && inicio < fim) {
-            troca = 1;
+        while (trocou && inicio < fim) {
+            trocou = false;
 
             for (int i = inicio; i < fim; i++) {
-                interacoes ++;
+                interacoes++;
                 if (vetor[i] > vetor[i + 1]) {
                     temp = vetor[i];
                     vetor[i] = vetor[i + 1];
                     vetor[i + 1] = temp;
                     numTrocas++;
-                    troca = 0;
+                    trocou = true;
                 }
             }
 
             fim--;
 
             for (int i = fim; i > inicio; i--) {
-                interacoes ++;
-
+                interacoes++;
                 if (vetor[i] < vetor[i - 1]) {
                     temp = vetor[i];
                     vetor[i] = vetor[i - 1];
                     vetor[i - 1] = temp;
                     numTrocas++;
-                    troca = 0;
+                    trocou = true;
                 }
             }
 
@@ -58,8 +57,15 @@ public class CockTail {
             System.out.print(vetor[i] + " ");
         }
         System.out.println();
-        System.out.println("Número total de trocas: " + numTrocas);
-        System.out.println("Número total de interações: " + interacoes);
+    }
+
+
+    public long getNumTrocas() {
+        return numTrocas;
+    }
+
+    public long getInteracoes() {
+        return interacoes;
     }
 
 }

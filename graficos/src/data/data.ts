@@ -162,6 +162,7 @@ export const tempoOrdenacao = [
   ...item,
   tamanho: formataTamanho(item.tamanho)
 }));
+
 export function filtraSortPorTamanho(tamanhoOriginal: number) {
   return tempoOrdenacao.filter(item => {
     if (typeof item.tamanho === 'string') {
@@ -176,6 +177,7 @@ export function filtraSortPorTamanho(tamanhoOriginal: number) {
     return tamanhoOriginal === item.tamanho;
   });
 }
+
 export const chartConfig = {
   ms: {
     label: "ms",

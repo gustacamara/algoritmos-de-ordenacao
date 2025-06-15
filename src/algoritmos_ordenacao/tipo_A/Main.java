@@ -11,12 +11,27 @@ public class Main {
         System.out.println("Lista original:");
         ordenador.imprimir();
 
+        long tempoInicial = System.nanoTime();
         ordenador.combsort(lista);
+        long tempoFinal = System.nanoTime();
 
-        System.out.println("Lista ordenada pelo CombSort:");
+        System.out.println("\nLista ordenada pelo CombSort:");
         ordenador.imprimir();
-        System.out.println("\n");
 
+        long tempoDeExecucaoEmNanossegundos = tempoFinal - tempoInicial;
+        double tempoDeExecucaoEmMilissegundos = tempoDeExecucaoEmNanossegundos / 1_000_000.0;
+
+        System.out.println("\n\n>>> Métricas de Execução <<<");
+        System.out.printf("Tempo de execução: %.4f milissegundos.\n", tempoDeExecucaoEmMilissegundos);
+
+        System.out.println("\nContador de iterações: ");
+        System.out.println(ordenador.getIteracoes());
+        System.out.println("Contador de trocas: ");
+        System.out.println(ordenador.getTrocas());
+
+
+
+        System.out.println("\n");
 
         // main selection sort
         final Random random = new Random();
