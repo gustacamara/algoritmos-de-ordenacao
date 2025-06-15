@@ -62,7 +62,7 @@ public class Main {
                 // --- GnomeSort ---
                 GnomeSort gnomeSort = new GnomeSort(tamanho);
 
-                GeraNumeros.numerosGnome(tamanho, gnomeSort, rodada);
+                GeraNumeros.copiaDadosGnome(dados, gnomeSort,tamanho);
                 inicio = System.nanoTime();
                 gnomeSort.ordenar();
                 long tempoGnome = (System.nanoTime() - inicio);
