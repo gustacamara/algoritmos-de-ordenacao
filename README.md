@@ -80,14 +80,29 @@ eficiente para dados reais, especialmente listas parcialmente ordenadas.
 
  ## Gráficos
  Acesse a visualização dos gráficos diretamente pelo GitHub Pages:
+ 
 [https://gustacamara.github.io/algoritmos-de-ordenacao](https://gustacamara.github.io/algoritmos-de-ordenacao)
 
- ![Imagem vetor de 100_000 posições](https://github.com/user-attachments/assets/9a067d69-306a-4534-b86f-7f6cf136fa86)
- > Gráfico comparativo do vetor de 100.000 posições.
+![Imagem comparativa geral](https://github.com/user-attachments/assets/480af8ce-32ee-4d40-b790-7a873fa7712a)
+> Gráfico comparativo de todos os vetores.
 
-## Nossa Experiência no Projeto
+![Imagem vetor de 1_000 posições](https://github.com/user-attachments/assets/e02d4b3f-1eb0-4d63-8e2b-12ac51cb089d)
+> Gráfico comparativo do vetor de 1.000 posições.
 
-### Conclusão:
+![Imagem vetor de 10_000 posições](https://github.com/user-attachments/assets/66522c68-5a62-40a9-a4df-52b61d85d5bf)
+> Gráfico comparativo do vetor de 10.000 posições.
+
+
+![Imagem vetor de 100_000 posições](https://github.com/user-attachments/assets/9a067d69-306a-4534-b86f-7f6cf136fa86)
+> Gráfico comparativo do vetor de 100.000 posições.
+
+![Imagem vetor de 500_000 posições](https://github.com/user-attachments/assets/7d1f2308-8f23-4c56-b2d0-33944c9de3f4)
+> Gráfico comparativo do vetor de 500.000 posições.
+
+![Imagem vetor de 1_000_000 posições](https://github.com/user-attachments/assets/7078f863-6a1e-44e6-b905-1e98331264df)
+> Gráfico comparativo do vetor de 1.000.000 posições.
+
+## Conclusão:
 
 Após a análise comparativa, o **Quick Sort** se destacou como o algoritmo
 mais eficiente, apresentando os melhores tempos de execução, especialmente
@@ -100,6 +115,8 @@ maior que o tempo de execução em milissegundos, evidenciando seu alto
 custo computacional em termos de operações realizadas, o **Tim Sort** foi o
 algoritmo com o menor número de iterações entre todos os cenários e foi relativamente
  melhor que o **Comb Sort**.
+
+## Nossa Experiência no Projeto
 
 ### Divisão de Tarefas
 
@@ -147,7 +164,7 @@ algoritmo com o menor número de iterações entre todos os cenários e foi rela
 
 1. Entre na pasta do algoritmo desejado, por exemplo:
    ```sh
-   cd src/algoritmos_ordenacao/tipo_A
+   cd src/algoritmos_ordenacao/tipo_C
    ```
 2. Compile e execute o arquivo `Main.java`:
    ```sh
