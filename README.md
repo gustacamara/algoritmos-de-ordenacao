@@ -43,8 +43,80 @@ algorimos-de-ordenacao/
       ├── FormataMain.java
       └── Main.java
 ```
-- Dica: Os arquivos dos algoritmos estão agrupados por tipo (`tipo_A`, `tipo_B`, `tipo_C`) dentro de `src/algoritmos_ordenacao/`.
-- Os gráficos e dados estão em `graficos/src/`, separados em pastas para componentes, dados e gráficos específicos.
+- Dica: Os arquivos dos algoritmos estão agrupados por tipo (`tipo_A`, `tipo_B`, 
+`tipo_C`) dentro de `src/algoritmos_ordenacao/`.
+- Os gráficos e dados estão em `graficos/src/`, separados em pastas para componentes,
+ dados e gráficos específicos.
+
+## Análise dos Tipos de Ordenação
+
+Os algoritmos de ordenação utilizados neste projeto foram agrupados em três 
+tipos, cada um com características e desempenhos distintos:
+
+### Tipo A
+
+- **Comb Sort**: Variante do Bubble Sort, melhora a eficiência ao eliminar 
+"tartarugas" (valores pequenos no final do array). É eficiente para listas médias.
+- **Selection Sort**: Simples e fácil de implementar, porém pouco eficiente 
+para grandes volumes de dados devido à complexidade O(n²). Útil quando o custo 
+de troca é baixo.
+
+### Tipo B
+
+- **Quick Sort**: Algoritmo de ordenação eficiente na prática, com complexidade 
+média O(n log n). Utiliza a estratégia de divisão e conquista, sendo muito rápido 
+para grandes conjuntos de dados, mas pode ter desempenho ruim em casos degenerados 
+(já ordenados).
+
+### Tipo C
+
+- **Cocktail Sort**: Variante bidirecional do Bubble Sort, melhora um pouco a 
+eficiência, mas ainda é O(n²). Indicado para listas quase ordenadas.
+- **Gnome Sort**: Simples e intuitivo, funciona bem para listas pequenas ou 
+quase ordenadas, mas é ineficiente para listas grandes.
+- **TimSort**: Algoritmo híbrido baseado em Merge Sort e Insertion Sort. Muito 
+eficiente para dados reais, especialmente listas parcialmente ordenadas.
+
+### Conclusão: 
+
+Após a análise comparativa, o **Quick Sort** se destacou como o algoritmo 
+mais eficiente, apresentando os melhores tempos de execução, especialmente 
+em grandes volumes de dados. Por outro lado, o **Gnome Sort** foi o que apresentou 
+o pior desempenho do grupo, sendo muito mais lento e inadequado para listas grandes, 
+o **CockTail Sort** ficou com o desempenho 26% melhor em relação ao numero de iterações 
+mas manteve o numero de trocas parelho com o do **Gnome Sort**. As observação importante 
+a resaltar são que, no caso do **Selection Sort**, o número de iterações foi 830,98% 
+maior que o tempo de execução em milissegundos, evidenciando seu alto 
+custo computacional em termos de operações realizadas, o **Tim Sort** foi o 
+algoritmo com o menor número de iterações entre todos os cenários e foi relativamente
+ melhor que o **Comb Sort**.
+
+
+## Nossa Experiência no Projeto
+
+### Divisão de Tarefas
+
+#### Ana Paula
+- Implementação dos algoritimos (**Comb** e **Quick** ).
+- Implementa Contadores.
+- Implementa Timers para calcular o tempo(**ns**).
+
+#### Carlos Nogueira
+- Implementação dos algoritimos (**CockTail** e **Tim** ).
+- Implementação dos relatórios gerais dos algoritmos.
+
+#### Luis Gustavo
+- Implementação dos algoritmos (**Selection** e **Gnome**).
+- Organização e desenvolvimento dos dashboards feitos em `Typescript`.
+- Implementação do `README.md`.
+
+ ### Desafios Enfrentados
+ - Copia dos dados, pois estavam sendo copiados ordenadamente.
+ - Filtragem dos dados para melhor visibilidade do gráfico.
+
+ ### Aprendizados
+ - Descobrimos que alguns algoritmos são melhores tipos especificos de dados.
+ - Aprendemos a melhorar as implmentar gráficos de uma forma mais "academica".
 
 ## Como rodar o projeto
 
